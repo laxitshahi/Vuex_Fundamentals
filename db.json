@@ -29,6 +29,16 @@
       "date": "July 22, 2022",
       "time": "11:00",
       "organizer": "Carey Wales"
+    },
+    {
+      "id": "aefc8480-a284-47a6-b8a0-6022df4e1fe3",
+      "category": "",
+      "title": "Event",
+      "description": "An Event",
+      "location": "Toronto",
+      "date": "August, 25, 2033",
+      "time": "12:00",
+      "organizer": "Adam Jahr"
     }
   ]
 }
