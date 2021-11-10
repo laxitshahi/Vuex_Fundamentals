@@ -1,6 +1,5 @@
 <template>
 <h1>Create an event</h1>
-
 <div class="form-container">
 
   <form @submit.prevent="onSubmit">
@@ -56,13 +55,13 @@
 
     <button type="submit">Submit</button>
   </form>
-
+  
 </div>
 </template>
 
 <script>
 import { v4 as uuidv4 } from 'uuid'
-
+import EventService from '@/services/EventService.js'
 export default {
   data () {
     return {
@@ -89,9 +88,19 @@ export default {
   },
   methods: {
     onSubmit() {
-      this.event.id = uuidv4()
-      this.event.organizer = this.$store.state.user
-      console.log("Event:", this.event)
+      const event = {
+        ...this.event, //this.event refers to the event in the data
+        id: uuidv4(),
+        organizer: this.$store.state.user
+      }
+      
+      EventService.postEvent(event) //this event refers to the event object just created just above
+      .then(() => {
+        this.$store.commit('ADD_EVENT', event)
+      })
+      .catch(error => {
+        console.log(error)
+      })
     }
   }
 }

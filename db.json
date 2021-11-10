@@ -29,6 +29,26 @@
       "date": "July 22, 2022",
       "time": "11:00",
       "organizer": "Carey Wales"
+    },
+    {
+      "id": "d6abc12b-715d-4b12-b489-834f1857a0ed",
+      "category": "",
+      "title": "Event",
+      "description": "An Event",
+      "location": "Toronto",
+      "date": "August 21, 2000",
+      "time": "2:00 ",
+      "organizer": "Adam Jahr"
+    },
+    {
+      "id": "08ba03b6-9c43-4c7b-bcca-99f04cdcb585",
+      "category": "",
+      "title": "Some Event",
+      "description": "Some other event",
+      "location": "Los Angeles ",
+      "date": "August 22, 2021",
+      "time": "3:00",
+      "organizer": "Adam Jahr"
     }
   ]
 }
