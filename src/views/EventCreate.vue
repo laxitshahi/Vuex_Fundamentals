@@ -1,8 +1,6 @@
 <template>
 <h1>Create an event</h1>
-
 <div class="form-container">
-
   <form @submit.prevent="onSubmit">
     <label>Select a category: </label>
     <select v-model="event.category">
@@ -56,13 +54,11 @@
 
     <button type="submit">Submit</button>
   </form>
-
 </div>
 </template>
 
 <script>
 import { v4 as uuidv4 } from 'uuid'
-
 export default {
   data () {
     return {
@@ -75,27 +71,40 @@ export default {
         'food',
         'community'
       ],
-      event: {
-        id: '',
+      event: this.freshEventObject()
+    }
+  },
+  methods: {
+    onSubmit() {
+      this.$store.dispatch('createEvent', this.event)
+      .then( () => {
+        this.freshEventObject() // correct placement?
+        this.$router.push({
+          name: 'EventDetails',
+          params: { id: this.event.id }
+        })
+      })
+      .catch( error => {
+        this.$router.push({
+          name: 'ErrorDisplay',
+          params: { error: error }
+        })
+      })
+    },
+    freshEventObject() {
+      const id = uuidv4()
+      const user = this.$store.state.user
+      return {
+        id: id,
         category: '',
         title: '',
         description: '',
         location: '',
         date: '',
         time: '',
-        organizer: ''
+        organizer: user
       }
     }
-  },
-  methods: {
-    onSubmit() {
-      const event = {
-        ...this.event,
-        id: uuidv4(),
-        organizer: this.$store.state.user
-      }
-			this.$store.dispatch('createEvent', event)
-		}
   }
 }
 </script>
